@@ -1,0 +1,42 @@
+    1  > ~/.bash_history
+    2  useradd -m -u 1234 user1
+    3  passwd user1
+    4  groupadd students
+    5  usermod -aG students user1
+    6  chage -M 90 user1
+    7  id user1
+    8  chage -l user1
+    9  find / -type f =perm -4000 2>/dev/null > /root/suid_files.out
+   10  cat /root/suid_files.out
+   11  ps -eo ruid,euid,pid,args | awk \$2==0 && $1>=1000' > root/ps_suid.out
+   12  ps -eo ruid,euid,pid,args | awk '$2==0 && $1>=1000' > root/ps_suid.out
+   13  ps -eo ruid,euid,pid,args | awk '$2==0 && $1>=1000' > /root/ps_suid.out
+   14  cat /root/ps_suid.out
+   15  history -n
+   16  cp /usr/bin/cat /home/user1/mycat
+   17  su - user1 -c '/home/user1/mycat /etc/shadow'
+   18  chown root:root /home/user1/mycat
+   19  chmod u+s /home/user1/mycat
+   20  su - user1 -c '/home/user1/mycat /etc/shadow'
+   21  cp /usr/bin/chown /home/user1/mychown
+   22  su - user1 -c 'touch /home/user1/t.txt'
+   23  su - user1 -c '/home/user1/mychown root /home/user1/t.txt'
+   24  setcap cap_chown+ep /home/user1/mychown
+   25  getcap /home/user1/mychown
+   26  su - user1 -c 'home/user1/mychown root /home/user1/t.txt'
+   27  su - user1 -c '/home/user1/mychown root /home/user1/t.txt'
+   28  ;s -l /home/user1/t.txt
+   29  ls -l /home/user1/t.txt
+   30  sudo -l -U user1
+   31  echo ;
+   32  echo 'user1 All=(root) /usr/bin/date' >> /etc/sudoers
+   33  sudo -l -U user1
+   34  echo 'user1 ALL=(root) /usr/bin/date' >> /etc/sudoers
+   35  sudo -l -U user1
+   36  su - user1
+   37  find / -type f -perm -4000 2>/dev/null > /root/suid_files_after.out
+   38  grep mycat /root/suid_files_after.out
+   39  echo 376027
+   40  cd /root
+   41  history -a
+   42  history > ~/history.out
